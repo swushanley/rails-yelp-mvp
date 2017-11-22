@@ -1,2 +1,44 @@
-<h1>RestaurantsController#show</h1>
-<p>Find me in app/views/restaurants_controller/show.html.erb</p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @restaurant.name %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= @restaurant.address %>
+  </p>
+
+  <p>
+    <strong>Phone number:</strong>
+    <%= @restaurant.phone_number %>
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= @restaurant.category %>
+  </p>
+
+  <h3>Current reviews</h3>
+  <% if @restaurant.reviews.length > 0 %>
+    <div class="list-group">
+      <% @restaurant.reviews.each do |review| %>
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">
+            <%(1..review.rating).each do %>
+              <i class="fa fa-star star" aria-hidden="true"></i>
+            <% end %>
+            </h4>
+          <p class="list-group-item-text"><%= review.content %></p>
+        </div>
+      <% end %>
+    </div>
+  <% else  %>
+    <h4>No reviews yet</h4>
+  <% end %>
+
+  <%= link_to 'Add a review', new_restaurant_review_path(@restaurant)%> |
+  <%= link_to 'Back', restaurants_path %>
+</div>

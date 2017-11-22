@@ -1,2 +1,7 @@
-<h1>RestaurantsController#new</h1>
-<p>Find me in app/views/restaurants_controller/new.html.erb</p>
+<div class="container">
+  <h1>Create a New Restaurant</h1>
+
+  <%= render 'form', restaurant: @restaurant %>
+
+  <%= link_to 'Back', restaurants_path %>
+</div>
